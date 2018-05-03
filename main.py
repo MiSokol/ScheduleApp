@@ -32,8 +32,9 @@ def getTask():
     return Task(name, time, deadline)
 
 
-def sortDict(taskDict):
-    taskDict.dictionary = sorted(tasks, key=lambda task: task.deadline)
+def sortDict():
+    global tasks
+    tasks = sorted(tasks, key=lambda task: task.deadline)
 
 
 def interface():
@@ -46,7 +47,7 @@ def interface():
             if len(cmd) > 1:
                 if cmd[1] == "task":
                     tasks.append(getTask())
-                    sortDict(tasks)
+                    sortDict()
             else:
                 print("Warning: Not enough params")
         elif cmd[0] == "status":
