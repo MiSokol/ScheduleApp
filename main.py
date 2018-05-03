@@ -4,20 +4,42 @@ import ExcelInterface as ex
 class Task:
     def __init__(self, name, time, deadline):
         self.name = name
-        self.time = time  # in seconds
-        self.deadline = deadline  # timestamp
+        self.time = timelook_from(time)  # in seconds
+        self.deadline = timelook_from(deadline)  # timestamp
         print("Log: Task object was created successfully")
 
     def toString(self):
         return ("Task name: " + self.name +
-                "\nTask time: " + str(self.time) +
-                "\nTask deadline: " + str(self.deadline))
+                "\nDo task at: " + str(timelook_to(times[self.name][0])) +
+                "\nTask time: " + str(timelook_to(self.time)) +
+                "\nTask deadline: " + str(timelook_to(self.deadline)))
+    def valu(self):
+        return [self.name,int(self.time),int(self.deadline)]
 
 tasks = []
+times = dict()
+
+
+def timelook_from(s):
+    S = list(s.split(':'))
+    if len(S) > 1:
+        return int(S[0])*60 + int(S[1])
+    else:
+        return int(S[0])
+    
+def timelook_to(s):
+    hours = str(s//60)
+    seconds = str(s%60)
+    if s//60 < 10:
+        hours = '0'+str(s//60)
+    if s%60 < 10:
+        seconds = '0'+str(s%60)
+    return hours+':'+seconds
 
 
 def tasksToString():
     global tasks
+    global times
     info = "Your tasks for today:"
     for task in tasks:
         info += "\n----------------------\n"  # ASCII art :)
@@ -40,6 +62,7 @@ def sortDict():
 
 def interface():
     global tasks
+    global times
     while True:
         cmd = input(">> ").split()
         if cmd[0] == "exit":
@@ -50,7 +73,19 @@ def interface():
                     tasks.append(getTask())
                     sortDict()
                     ex.initial() #backup
+                    lasttime = 9*60
                     for i in tasks:
+                        if lasttime + i.valu()[1] < 22*60:
+                            times[i.valu()[0]] = [lasttime]
+                            lasttime += i.valu()[1]
+                        else:
+                            if 22*60 - lasttime + i.valu()[1] > 60:
+                                times[i.valu()[0]] = [22*60,9*60+22*60 - lasttime + i.valu()[1] - 60]
+                                lasttime = 9*60
+                                
+                            else:
+                                times[i.valu()[0]] = [9*60]
+                                lasttime = 9*60
                         ex.addRow(i)
             else:
                 print("Warning: Not enough params")
