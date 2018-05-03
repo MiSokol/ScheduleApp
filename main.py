@@ -1,5 +1,5 @@
 import time
-
+import ExcelInterface as ex
 
 class Task:
     def __init__(self, name, time, deadline):
@@ -16,9 +16,10 @@ class Task:
 tasks = []
 
 
-def tasksToString(tasks):
+def tasksToString():
+    global tasks
     info = "Your tasks for today:"
-    for task in tasks.dictionary:
+    for task in tasks:
         info += "\n----------------------\n"  # ASCII art :)
         info += task.toString()
         info += "\n----------------------\n"  # ASCII art :)
@@ -48,10 +49,13 @@ def interface():
                 if cmd[1] == "task":
                     tasks.append(getTask())
                     sortDict()
+                    ex.initial() #backup
+                    for i in tasks:
+                        ex.addRow(i)
             else:
                 print("Warning: Not enough params")
         elif cmd[0] == "status":
-            print(tasksToString(tasks))
+            print(tasksToString())
         else:
             print("Wrong command!")
 

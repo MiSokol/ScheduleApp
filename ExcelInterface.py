@@ -2,18 +2,26 @@ import openpyxl
 from shutil import copy2
 import main
 
-wb = openpyxl.load_workbook(filename = './complete_schedule.xlsx')
-sheet = wb['Schedule']
-
-currentRow = 1
-
 def initial():
+    global wb, sheet, currentRow
+    try:
+        wb._archive.close()
+    except:
+        pass
     copy2("./init_excel/complete_schedule.xlsx", "./complete_schedule.xlsx")
-    pass
+    wb = openpyxl.load_workbook(filename='./complete_schedule.xlsx')
+    sheet = wb['Schedule']
+    currentRow = 2
 
 def addRow(task):
-    sheet[str(currentRow) + 'A'] = task.name
-    sheet[str(currentRow) + 'B'] = task.time
-    sheet[str(currentRow) + 'C'] = task.deadline
+    global currentRow
+    sheet['A' + str(currentRow)] = task.name
+    sheet['B' + str(currentRow)] = task.time
+    sheet['C' + str(currentRow)] = task.deadline
+    currentRow+=1
+    wb.save("./complete_schedule.xlsx")
 
-initial()
+
+wb = openpyxl.load_workbook(filename = './complete_schedule.xlsx')
+sheet = wb['Schedule']
+currentRow = 2
