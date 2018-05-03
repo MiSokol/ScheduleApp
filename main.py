@@ -6,12 +6,14 @@ class Task:
         self.name = name
         self.time = time  # in seconds
         self.deadline = deadline  # timestamp
+        self.completed = False
         print("Log: Task object was created successfully")
 
     def toString(self):
         return ("Task name: " + self.name +
                 "\nTask time: " + str(self.time) +
-                "\nTask deadline: " + str(self.deadline))
+                "\nTask deadline: " + str(self.deadline) +
+                "\nTask completed: " + str(self.completed))
 
 tasks = []
 
@@ -28,8 +30,8 @@ def tasksToString():
 
 def getTask():
     name = input("What's the name?: ")
-    time = input("How much time doues it take to do your task?: ")
-    deadline = input("When is your deadline of task?: ")
+    time = int(input("How much time does it take to do your task?: "))
+    deadline = int(input("When is your deadline of task?: "))
     return Task(name, time, deadline)
 
 
@@ -40,6 +42,7 @@ def sortDict():
 
 def interface():
     global tasks
+    ex.initial()
     while True:
         cmd = input(">> ").split()
         if cmd[0] == "exit":
@@ -49,15 +52,48 @@ def interface():
                 if cmd[1] == "task":
                     tasks.append(getTask())
                     sortDict()
-                    ex.initial() #backup
+                    ex.initial()  # backup
+
+                    counter = 0
                     for i in tasks:
                         ex.addRow(i)
+                        if i.completed:
+                            ex.makeRowCompleted(counter)
+                            counter += 1
             else:
                 print("Warning: Not enough params")
         elif cmd[0] == "status":
             print(tasksToString())
+        elif cmd[0] == "import":
+            tasks = ex.readFromList()
+            sortDict()
+            ex.initial()  # backup
+
+            counter = 0
+            for i in tasks:
+                ex.addRow(i)
+                if i.completed:
+                    ex.makeRowCompleted(counter)
+                    counter+=1
+
+        elif cmd[0] == "set":
+            if len(cmd) > 3:
+                if cmd[1] == "status":
+                    taskID = cmd[2]
+                    status = cmd[3]
+                    if status == "completed":
+                        try:
+                            tsk = tasks[int(taskID)]
+                            tsk.completed = True
+                            ex.makeRowCompleted(int(taskID))
+                            print(taskID, "set to completed")
+                        except Exception as exception:
+                            print(exception)
+                            print("ERROR: No such TaskID!!!")
+            else:
+                print("Warning: Not enough params")
         else:
-            print("Wrong command!")
+            print("Warning: Wrong command!")
 
 
 def main():
