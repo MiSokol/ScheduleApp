@@ -7,7 +7,7 @@ def task_list(request):
     return HttpResponse("Main Page")
 
 def login(request):
-    return HttpResponse("Login Page")
+    return render(request, "scheduleapp/login_page.html")
 
 def settings(request):
     return HttpResponse("Settings Page")
