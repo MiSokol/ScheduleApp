@@ -13,25 +13,16 @@ class Task:
                 "\nTask time: " + str(self.time) +
                 "\nTask deadline: " + str(self.deadline))
 
+tasks = []
 
-class TaskDict:
-    def __init__(self):
-        self.dictionary = []
 
-    def appendToDict(self, task):
-        if type(task) is Task:
-            self.dictionary.append(task)
-        else:
-            print(task)
-            print('Warning: task in not Task Object!')
-
-    def toString(self):
-        info = "Your tasks for today:"
-        for task in self.dictionary:
-            info += "\n----------------------\n"  # ASCII art :)
-            info += task.toString()
-            info += "\n----------------------\n"  # ASCII art :)
-        return info
+def tasksToString(tasks):
+    info = "Your tasks for today:"
+    for task in tasks.dictionary:
+        info += "\n----------------------\n"  # ASCII art :)
+        info += task.toString()
+        info += "\n----------------------\n"  # ASCII art :)
+    return info
 
 
 def getTask():
@@ -46,7 +37,7 @@ def sortDict(taskDict):
 
 
 def interface():
-    taskDict = TaskDict()
+    global tasks
     while True:
         cmd = input(">> ").split()
         if cmd[0] == "exit":
@@ -54,12 +45,12 @@ def interface():
         elif cmd[0] == "add":
             if len(cmd) > 1:
                 if cmd[1] == "task":
-                    taskDict.appendToDict(getTask())
-                    sortDict(taskDict)
+                    tasks.append(getTask())
+                    sortDict(tasks)
             else:
                 print("Warning: Not enough params")
         elif cmd[0] == "status":
-            print(taskDict.toString())
+            print(tasksToString(tasks))
         else:
             print("Wrong command!")
 
