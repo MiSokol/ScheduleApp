@@ -33,7 +33,7 @@ def getTask():
 
 
 def sortDict(taskDict):
-    taskDict.dictionary = sorted(taskDict.dictionary, key=lambda task: task.deadline)
+    taskDict.dictionary = sorted(tasks, key=lambda task: task.deadline)
 
 
 def interface():

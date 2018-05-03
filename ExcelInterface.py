@@ -6,7 +6,7 @@ wb = openpyxl.load_workbook(filename = './complete_schedule.xlsx')
 sheet = wb['Schedule']
 
 def initial():
-    copy2("/init_excel/complete_schedule.xlsx", "/complete_schedule.xlsx")
+    copy("/init_excel/complete_schedule.xlsx", "/complete_schedule.xlsx")
     pass
 
 initial()
