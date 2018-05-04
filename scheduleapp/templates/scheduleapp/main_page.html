@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="{% static 'scheduleapp/js/script.js' %}"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'scheduleapp/css/styles.css' %}">
 </head>
-<body>
+</html><body>
 
 	<div id="dialog-confirm" title="Вопрос" hidden="true">
 	  <p>Завершить текущее задание?</p>
@@ -22,12 +22,12 @@
 		  <form>
 		    <fieldset>
 		      <label for="name">Название</label>
-		      <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all"><br>
+		      <input type="text" name="name" id="name_inp" value="" class="text ui-widget-content ui-corner-all"><br>
 		      <label for="time">Время</label>
-		      <input type="text" name="tex" id="time" value="" class="text ui-widget-content ui-corner-all"><br>
+		      <input type="text" name="text" id="time_inp" value="" class="text ui-widget-content ui-corner-all"><br>
 		      <label for="deadline">Дедлайн</label>
-		      <input type="deadline" name="deadline" id="deadline" value="" class="text ui-widget-content ui-corner-all">
-
+		      <input type="deadline" name="deadline" id="deadline_inp" value="" class="text ui-widget-content ui-corner-all">
+		 	
 		      <!-- Allow form submission with keyboard without duplicating the dialog button -->
 		      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
 		    </fieldset>
@@ -40,20 +40,27 @@
 		</div>
 		<button type="button" class="btn btn-danger" id="logout_btn">Выйти</button>
 		<button type="button" class="btn btn-secondary" id="add_task">Добавить задание</button>
-
+		
 	</header><br><br><br>
 	<content>
-		{% for task in tasks_list %}
+		<div id="tasklist">
 			<div class="task">
-				<p class="name"> {{ task.name }} </p>
-				<p class="time"> {{ task.time }} </p>
-				<p class="deadline"> {{ task.deadline }} </p>
+				<p class="name"> Английский язык </p>
+				<p class="time"> 120 минут </p>
+				<p class="deadline"> Deadline: Завтра </p>
 			</div>
-		{% endfor %}
+			<div class="task">
+				<p class="name"> Математика </p>
+				<p class="time"> 20 минут </p>
+				<p class="deadline"> Deadline: Завтра </p>
+			</div>
+		</div>
+
 	</content>
 	<footer>
 		<br>
 		<br>
 	</footer>
 </body>
+	<script type="text/javascript" src="js/script.js"></script>
 </html>
