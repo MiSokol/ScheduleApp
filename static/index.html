@@ -5,25 +5,50 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+	  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
 	<script type="text/javascript" scr="js/script.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+	<script type="text/javascript">
+		
+    </script>
 </head>
 <body>
 
-	<!-- Only for developers -->
+	<div id="dialog" title="Вопрос" hidden="true">
+	  <p>Завершить текущее задание?</p>
+	</div>
 
 	<header>
 		<div id="title">
 			<h1> Список ваших дел </h1>
 		</div>
-	</header><br><br>
+		<button type="button" class="btn btn-secondary" id="add_task">Добавить задание</button>
+	</header><br><br><br>
 	<content>
-		<div class="task">
+		<div class="task" onclick="openComplete()">
 			<p class="name"> Это должно быть дело </p>
 			<p class="time"> 2 часа </p>
 			<p class="deadline"> Deadline: Завтра </p>
 		</div>
+		<div class="task-completed">
+			<p class="name"> Это должно быть дело </p>
+			<p class="time"> 2 часа </p>
+			<p class="deadline"> Deadline: Завтра </p>
+		</div>
+		<div class="task" onclick="openPopUp()">
+			<p class="name"> Это должно быть дело </p>
+			<p class="time"> 2 часа </p>
+			<p class="deadline"> Deadline: Завтра </p>
+		</div>
+		<div class="task" onclick="openPopUp()">
+			<p class="name"> Это должно быть дело </p>
+			<p class="time"> 2 часа </p>
+			<p class="deadline"> Deadline: Завтра </p>
+		</div>
+
 	</content>
 	<footer>
 		
