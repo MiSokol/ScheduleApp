@@ -1,0 +1,39 @@
+#title {
+	width: 25%;
+    margin: 0 auto;
+}
+
+.task {
+	width: 25%;
+	margin: 0 auto;
+	width: 850px;
+	padding: 10px;
+	border: 2px solid #000;
+	margin-top: 10px;
+	background-color: whitesmoke; 
+}
+
+.task:hover {
+	background-color: lightgray; 
+}
+
+.task .name {
+	display: inline-block;
+	width: 200px;
+	padding-top: 5px; 
+	font-size: 18px;
+}
+
+.task .deadline {
+	padding-top: 0%;
+	width: 200px;
+}
+
+.task .time {
+	display: inline-block;
+	float: right;
+	margin-top:10px;
+	width: 100px;
+	text-align: right;
+	margin-right: 5px;
+}
