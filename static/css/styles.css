@@ -61,3 +61,10 @@ p {
 	margin-top:10px;
 	margin-right: 15px;
 }
+
+#logout_btn {
+	display: inline-block;
+	float: right;
+	margin-top:10px;
+	margin-right: 15px;
+}
