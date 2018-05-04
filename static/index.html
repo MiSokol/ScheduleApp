@@ -25,11 +25,11 @@
 		  <form>
 		    <fieldset>
 		      <label for="name">Название</label>
-		      <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all"><br>
+		      <input type="text" name="name" id="name_inp" value="" class="text ui-widget-content ui-corner-all"><br>
 		      <label for="time">Время</label>
-		      <input type="text" name="tex" id="time" value="" class="text ui-widget-content ui-corner-all"><br>
+		      <input type="text" name="text" id="time_inp" value="" class="text ui-widget-content ui-corner-all"><br>
 		      <label for="deadline">Дедлайн</label>
-		      <input type="deadline" name="deadline" id="deadline" value="" class="text ui-widget-content ui-corner-all">
+		      <input type="deadline" name="deadline" id="deadline_inp" value="" class="text ui-widget-content ui-corner-all">
 		 	
 		      <!-- Allow form submission with keyboard without duplicating the dialog button -->
 		      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
@@ -46,30 +46,17 @@
 		
 	</header><br><br><br>
 	<content>
-		<div class="task">
-			<p class="name"> Это должно быть дело </p>
-			<p class="time"> 2 часа </p>
-			<p class="deadline"> Deadline: Завтра </p>
-		</div>
-		<div class="task-completed">
-			<p class="name"> Это должно быть дело </p>
-			<p class="time"> 2 часа </p>
-			<p class="deadline"> Deadline: Завтра </p>
-		</div>
-		<div class="task">
-			<p class="name"> Это должно быть дело </p>
-			<p class="time"> 2 часа </p>
-			<p class="deadline"> Deadline: Завтра </p>
-		</div>
-		<div class="task">
-			<p class="name"> Это должно быть дело </p>
-			<p class="time"> 2 часа </p>
-			<p class="deadline"> Deadline: Завтра </p>
-		</div>
-		<div class="task">
-			<p class="name"> Это должно быть дело </p>
-			<p class="time"> 2 часа </p>
-			<p class="deadline"> Deadline: Завтра </p>
+		<div id="tasklist">
+			<div class="task">
+				<p class="name"> Английский язык </p>
+				<p class="time"> 120 минут </p>
+				<p class="deadline"> Deadline: Завтра </p>
+			</div>
+			<div class="task">
+				<p class="name"> Математика </p>
+				<p class="time"> 20 минут </p>
+				<p class="deadline"> Deadline: Завтра </p>
+			</div>
 		</div>
 
 	</content>
@@ -78,4 +65,5 @@
 		<br>
 	</footer>
 </body>
+	<script type="text/javascript" src="js/script.js"></script>
 </html>
