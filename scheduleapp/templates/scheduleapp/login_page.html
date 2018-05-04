@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
-<div>
-  <form action="{% url 'check_login' %}" method="POST">
-    {% csrf_token %}
-    <div>
-      <input type="text" name="login" placeholder="enter your nickname"></input>
-    </div>
-    <div>
-      <button type="submit">Log In</button>
-    </div>
-  </form>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/amazium@5.0.0/dist/amazium.css" />
+<link rel="stylesheet" type="text/css" href="{% static 'scheduleapp/css/login_page.css' %}" />
+
+<div class="row row--align-center">
+  <div class="grid-6">
+  	<div >
+  	  <h1 class="title">
+  			Log in please
+  	  </h1>
+  	</div>
+    <form action="{% url 'check_login' %}" method="POST">
+      {% csrf_token %}
+      <div>
+        <input class = "input--grid" type="text" name="login" placeholder="Enter your nickname"></input>
+      </div>
+      <div class="grid--align-center">
+        <button class="btn grid" type="submit">Log In</button>
+      </div>
+    </form>
+  </div>
 </div>
