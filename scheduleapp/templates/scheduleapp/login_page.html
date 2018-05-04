@@ -2,9 +2,10 @@
 <meta charset="utf-8">
 
 <div>
-  <form action="/" method="get">
+  <form action="{% url 'check_login' %}" method="POST">
+    {% csrf_token %}
     <div>
-      <input type="text" placeholder="enter your nickname"></input>
+      <input type="text" name="login" placeholder="enter your nickname"></input>
     </div>
     <div>
       <button type="submit">Log In</button>
