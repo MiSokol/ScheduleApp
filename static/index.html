@@ -21,6 +21,22 @@
 	  <p>Завершить текущее задание?</p>
 	</div>
 
+	<div id="dialog-add-task" title="Добавить задание" hidden="true">
+		  <form>
+		    <fieldset>
+		      <label for="name">Название</label>
+		      <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all"><br>
+		      <label for="time">Время</label>
+		      <input type="text" name="tex" id="time" value="" class="text ui-widget-content ui-corner-all"><br>
+		      <label for="deadline">Дедлайн</label>
+		      <input type="deadline" name="deadline" id="deadline" value="" class="text ui-widget-content ui-corner-all">
+		 	
+		      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+		      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+		    </fieldset>
+		  </form>
+	</div>
+
 	<header>
 		<div id="title">
 			<h1> Список ваших дел </h1>
