@@ -27,7 +27,7 @@
 		      <input type="text" name="text" id="time_inp" value="" class="text ui-widget-content ui-corner-all"><br>
 		      <label for="deadline">Дедлайн</label>
 		      <input type="deadline" name="deadline" id="deadline_inp" value="" class="text ui-widget-content ui-corner-all">
-		 	
+
 		      <!-- Allow form submission with keyboard without duplicating the dialog button -->
 		      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
 		    </fieldset>
@@ -40,27 +40,20 @@
 		</div>
 		<button type="button" class="btn btn-danger" id="logout_btn">Выйти</button>
 		<button type="button" class="btn btn-secondary" id="add_task">Добавить задание</button>
-		
+
 	</header><br><br><br>
 	<content>
 		<div id="tasklist">
-			<div class="task">
-				<p class="name"> Английский язык </p>
-				<p class="time"> 120 минут </p>
-				<p class="deadline"> Deadline: Завтра </p>
-			</div>
-			<div class="task">
-				<p class="name"> Математика </p>
-				<p class="time"> 20 минут </p>
-				<p class="deadline"> Deadline: Завтра </p>
-			</div>
+			{% for task in tasks_list %}
+				<div class="task">
+					<p class="name"> {{ task.name }} </p>
+					<p class="time"> {{ task.time }} </p>
+					<p class="deadline"> {{ task.deadline }} </p>
+				</div>
+			{% endfor %}
 		</div>
 
 	</content>
-	<footer>
-		<br>
-		<br>
-	</footer>
 </body>
 		<script type="text/javascript" src="{% static 'scheduleapp/js/script.js' %}"></script>
 </html>
