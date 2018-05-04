@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
+
 	<script type="text/javascript" src="{% static 'scheduleapp/js/script.js' %}"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'scheduleapp/css/styles.css' %}">
 </head>
@@ -27,7 +27,7 @@
 		      <input type="text" name="tex" id="time" value="" class="text ui-widget-content ui-corner-all"><br>
 		      <label for="deadline">Дедлайн</label>
 		      <input type="deadline" name="deadline" id="deadline" value="" class="text ui-widget-content ui-corner-all">
-		 	
+
 		      <!-- Allow form submission with keyboard without duplicating the dialog button -->
 		      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
 		    </fieldset>
@@ -40,20 +40,16 @@
 		</div>
 		<button type="button" class="btn btn-danger" id="logout_btn">Выйти</button>
 		<button type="button" class="btn btn-secondary" id="add_task">Добавить задание</button>
-		
+
 	</header><br><br><br>
 	<content>
-		<div class="task">
-			<p class="name"> Это должно быть дело </p>
-			<p class="time"> 2 часа </p>
-			<p class="deadline"> Deadline: Завтра </p>
-		</div>
-		<div class="task-completed">
-			<p class="name"> Это должно быть дело </p>
-			<p class="time"> 2 часа </p>
-			<p class="deadline"> Deadline: Завтра </p>
-		</div>
-
+		{% for task in tasks_list %}
+			<div class="task">
+				<p class="name"> {{ task.name }} </p>
+				<p class="time"> {{ task.time }} </p>
+				<p class="deadline"> {{ task.deadline }} </p>
+			</div>
+		{% endfor %}
 	</content>
 	<footer>
 		<br>
