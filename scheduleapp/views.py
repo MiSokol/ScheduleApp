@@ -37,7 +37,16 @@ def task_list(request):
     if not check_auth(request):
         return redirect("/login/")
 
-    return render(request, "scheduleapp/main_page.html")
+    cur_user = User.objects.filter(login=request.session["login"])[0]
+    raw_tasks_list = Task.objects.filter(user=cur_user)
+    tasks_list = []
+    for task in raw_tasks_list:
+        tasks_list.append(task)
+    print(tasks_list)
+    sorted(tasks_list, key = lambda x: x.deadline)
+    return render(request, "scheduleapp/main_page.html", {
+        'tasks_list': tasks_list
+    })
 
 def settings(request):
     if not check_auth(request):
